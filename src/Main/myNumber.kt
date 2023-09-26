@@ -42,10 +42,11 @@ class Exponent(override var a:Double, override var b: Double):MyNumber<Exponent>
 }
 
 operator fun Complex.plus(x: Exponent): Complex{
-
+    return Complex(this.a+x.a.pow(x.b), this.b)
 }
 
 operator fun Exponent.plus(x:Complex): Complex{
+    return Complex(this.a.pow(this.b)+x.a, x.b)
 
 }
 
@@ -55,10 +56,12 @@ fun main() {
     val e1 = Exponent(2.0,3.0)
     val e2 = Exponent(1.0,2.0)
 
-    println("c1 + c2 = ${c1+c2}") // Should print: c1 + c2 = 5.0+4.0
-    println("c1 - c2 = ${c1-c2}") // Should print: c1 - c2 = 3.0+0.0i
+    println("c1 + c2 = ${c1+c2}")
+    println("c1 - c2 = ${c1-c2}")
     println("e1 + e2 = ${e1+e2}")
     println("e1 - e2 = ${e1-e2}")
+    println("c1 + e1 = ${c1+e1}")
+    println("c1 - e1 = ${e1+c1}")
 }
 
 
